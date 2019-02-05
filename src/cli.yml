@@ -1,0 +1,15 @@
+name: RASCII
+version: "0.1"
+author: Stepan K. <mightykho.dev@gmail.com>
+about: ASCII image preview on Rust
+args:
+    - image:
+        index: 1
+        value_name: IMAGE
+        help: Image path to preview
+        required: true
+    - width:
+        short: w
+        value_name: IMAGE WIDTH
+        help: Sets image width in symbols
+        required: false
