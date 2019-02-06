@@ -11,5 +11,16 @@ args:
     - width:
         short: w
         value_name: IMAGE WIDTH
-        help: Sets image width in symbols
+        help: "Sets image width in symbols. Default: 100"
+        required: false
+    - pixel_aspect_ratio:
+        short: p
+        value_name: PIXEL ASPECT RATIO
+        help: "Might need tweaking depending on line height. Default: 3.0"
+        required: false
+    - invert:
+        short: i
+        long: invert
+        takes_value: false
+        help: Invert image
         required: false
