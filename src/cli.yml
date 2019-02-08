@@ -24,3 +24,8 @@ args:
         takes_value: false
         help: Invert image
         required: false
+    - fps:
+        short: f
+        long: fps
+        value_name: FPS
+        help: "Frames per second Default: 2"
