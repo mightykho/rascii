@@ -1,12 +1,12 @@
 name: RASCII
-version: "0.1"
+version: "0.2"
 author: Stepan K. <mightykho.dev@gmail.com>
 about: ASCII image preview on Rust
 args:
     - image:
         index: 1
         value_name: IMAGE
-        help: Image path to preview
+        help: "Image path to preview"
         required: true
     - width:
         short: w
@@ -16,16 +16,16 @@ args:
     - pixel_aspect_ratio:
         short: p
         value_name: PIXEL ASPECT RATIO
-        help: "Might need tweaking depending on line height. Default: 3.0"
+        help: "Sets aspect ratio of a symbol-pixel. Might need tweaking depending on line height. Default: 3.0"
         required: false
     - invert:
         short: i
         long: invert
         takes_value: false
-        help: Invert image
+        help: "Inverts image. Useful for light-themed terminals"
         required: false
     - fps:
         short: f
         long: fps
         value_name: FPS
-        help: "Frames per second Default: 2"
+        help: "Sets frames per second. Default: 2"
