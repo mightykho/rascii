@@ -1,5 +1,5 @@
 name: RASCII
-version: "0.2"
+version: "0.3"
 author: Stepan K. <mightykho.dev@gmail.com>
 about: ASCII image preview on Rust
 args:
@@ -23,6 +23,12 @@ args:
         long: invert
         takes_value: false
         help: "Inverts image. Useful for light-themed terminals"
+        required: false
+    - color:
+        short: c
+        long: color
+        takes_value: false
+        help: "Use colors instead of symbols. Less performant when used with GIFs"
         required: false
     - fps:
         short: f

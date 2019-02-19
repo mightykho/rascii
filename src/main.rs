@@ -1,40 +1,26 @@
 #[macro_use]
 extern crate clap;
 
+mod types;
 mod renderer;
-mod gif;
-mod img;
+mod settings;
+mod gif_renderer;
+mod generic_renderer;
+mod img_renderer;
+mod converter;
 
-use clap::App;
-use regex::Regex;
-
-use self::{img::open_and_render_img, gif::open_and_render_gif, renderer::Renderer};
+pub use self::settings::Settings;
+pub use self::types::*;
+pub use self::generic_renderer::GenericRenderer;
+pub use self::img_renderer::ImgRenderer;
+pub use self::gif_renderer::GifRenderer;
 
 fn main() {
   let yaml = load_yaml!("cli.yml");
-  let matches = App::from_yaml(yaml).get_matches();
+  let matches = clap::App::from_yaml(yaml).get_matches();
 
-  let image_path = matches.value_of("image").unwrap();
-  let gif_regex = Regex::new(r"\.gif$").unwrap();
+  let settings = Settings::new(matches);
+  let renderer = renderer::build_renderer(settings);
 
-  let width_param = matches.value_of("width").unwrap_or("");
-  let width = width_param.parse::<u32>().unwrap_or(100);
-
-  let par_param = matches.value_of("pixel_aspect_ratio").unwrap_or("");
-  let pixel_aspect_ratio = par_param.parse::<f64>().unwrap_or(3.0);
-
-  let fps_param = matches.value_of("fps").unwrap_or("");
-  let fps = fps_param.parse::<u32>().unwrap_or(2);
-
-  let invert = matches.is_present("invert");
-
-  let renderer = Renderer {
-    width, pixel_aspect_ratio, invert
-  };
-
-  if gif_regex.is_match(image_path) {
-    open_and_render_gif(image_path, renderer, fps);
-  } else {
-    open_and_render_img(image_path, renderer);
-  }
+  renderer.render();
 }

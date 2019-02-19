@@ -1,10 +1,11 @@
 [package]
 name = "rascii"
-version = "0.1.0"
-authors = ["Stepan Khodzhaian <stepan.khodzhaian@carwow.co.uk>"]
+version = "0.3.0"
+authors = ["Stepan Khodzhaian <mightykho.dev@gmail.com>"]
 edition = "2018"
 
 [dependencies]
+termcolor = "1.0.4"
 image = "0.21.0"
 gif = "0.10.1"
 regex = "1"
